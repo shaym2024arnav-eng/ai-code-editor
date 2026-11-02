@@ -1,0 +1,21 @@
+# Render blueprint for the backend API. Set the secret values in the Render dashboard.
+services:
+  - type: web
+    name: ai-code-editor-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: MONGO_URI
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: CORS_ORIGINS
+        sync: false
